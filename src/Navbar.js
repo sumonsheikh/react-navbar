@@ -3,15 +3,17 @@ import {FaBars, FaTwitter} from 'react-icons/fa';
 import {links, icons} from './data';
 
 const  Navbar = () => {
+    const [showLinks, setShowLinks] = useState(false);
     return (
         <nav>
             <div className="nav-center">
                 <div className="nav-header">
                     <h2><a href="#">Logo</a></h2>
-                    <button className="nav-toggle">
+                    <button className="nav-toggle" onClick={()=>setShowLinks(!showLinks)}>
                         <FaBars/>
                     </button>
                 </div>
+                {showLinks &&  
                 <div className="link-container show-container">
                     <ul className="links">
                        {links.map((link) =>{
@@ -23,7 +25,8 @@ const  Navbar = () => {
                            )
                        })}
                     </ul>
-                </div>
+                </div> }
+               
                 <ul className="social-icons">
                     {icons.map((singleIcon) =>{
                         const {id, url, icon} = singleIcon;
